@@ -27,7 +27,7 @@ function initApp() {
 	actualScore = 0;
 	initCanvas();
 	initStartPlayHandlers();
-	drawBestScoreScreen(actualScore);
+	drawBestScoreScreen(bestScore);
 }
 
 function initStartPlayHandlers() {
@@ -130,24 +130,24 @@ function endGame() {
 
 function initGesturesHandlers() {
 	// Handling touch platforms
-	$(document).bind('touchstart', touchstartHandler);
-	$(document).bind('touchmove', touchmoveHandler);
-	$(document).bind('touchend', touchendHandler);
+	//$(document).bind('touchstart', touchstartHandler);
+	//$(document).bind('touchmove', touchmoveHandler);
+	//$(document).bind('touchend', touchendHandler);
 
 	// Handling mouse platforms
-	$(document).bind('mousedown', mousedownHandler);
-	$(document).bind('mousemove', mousemoveHandler);
-	$(document).bind('mouseup', mouseupHandler);
+	$(document).on('vmousedown', mousedownHandler);
+	$(document).on('vmousemove', mousemoveHandler);
+	$(document).on('vmouseup', mouseupHandler);
 }
 
 function endGesturesHandlers() {
 	// Unbinding touch platforms
-	$(document).unbind('touchstart', touchstartHandler);
-	$(document).unbind('touchmove', touchmoveHandler);
-	$(document).unbind('touchend', touchendHandler);
+	//$(document).unbind('touchstart');
+	//$(document).unbind('touchmove');
+	//$(document).unbind('touchend');
 
 	// Unbinding mouse platforms
-	$(document).unbind('mousedown', mousedownHandler);
-	$(document).unbind('mousemove', mousemoveHandler);
-	$(document).unbind('mouseup', mouseupHandler);
+	$(document).off('mousedown');
+	$(document).off('mousemove');
+	$(document).off('mouseup');
 }
