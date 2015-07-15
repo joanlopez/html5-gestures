@@ -31,16 +31,16 @@ function initApp() {
 }
 
 function initStartPlayHandlers() {
-	$(document).bind('touchend', function(e) {
-		var touch = e.touches[0];
-		if(touch.pageX > canvas.width/2.5 &&
-			touch.pageX < canvas.width-canvas.width/2.5 &&
-			touch.pageY > canvas.height/2.5 &&
-			touch.pageY < canvas.height-canvas.height/2.5)
-		initializeDemo();
-	});
+	// $(document).bind('touchend', function(e) {
+	// 	var touch = e.touches[0];
+	// 	if(touch.pageX > canvas.width/2.5 &&
+	// 		touch.pageX < canvas.width-canvas.width/2.5 &&
+	// 		touch.pageY > canvas.height/2.5 &&
+	// 		touch.pageY < canvas.height-canvas.height/2.5)
+	// 	initializeDemo();
+	// });
 
-	$(document).bind('mouseup', function(e) {
+	$(document).bind('vmouseup', function(e) {
 		if(e.pageX > canvas.width/2.5 &&
 			e.pageX < canvas.width-canvas.width/2.5 &&
 			e.pageY > canvas.height/2.5 &&
@@ -53,8 +53,8 @@ function initializeDemo() {
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	// Unbind events
-	$(document).unbind('touchend');
-	$(document).unbind('mouseup');
+	//$(document).unbind('touchend');
+	$(document).unbind('vmouseup');
 	// Get next randoms
 	actualDemoGestures = getSomeArrayRandomItems(actualScore+1, gestures);
 	// Set state
@@ -147,7 +147,7 @@ function endGesturesHandlers() {
 	//$(document).unbind('touchend');
 
 	// Unbinding mouse platforms
-	$(document).off('mousedown');
-	$(document).off('mousemove');
-	$(document).off('mouseup');
+	$(document).off('vmousedown');
+	$(document).off('vmousemove');
+	$(document).off('vmouseup');
 }
