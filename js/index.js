@@ -31,15 +31,6 @@ function initApp() {
 }
 
 function initStartPlayHandlers() {
-	// $(document).bind('touchend', function(e) {
-	// 	var touch = e.touches[0];
-	// 	if(touch.pageX > canvas.width/2.5 &&
-	// 		touch.pageX < canvas.width-canvas.width/2.5 &&
-	// 		touch.pageY > canvas.height/2.5 &&
-	// 		touch.pageY < canvas.height-canvas.height/2.5)
-	// 	initializeDemo();
-	// });
-
 	$(document).bind('vmouseup', function(e) {
 		if(e.pageX > canvas.width/2.5 &&
 			e.pageX < canvas.width-canvas.width/2.5 &&
@@ -53,7 +44,6 @@ function initializeDemo() {
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	// Unbind events
-	//$(document).unbind('touchend');
 	$(document).unbind('vmouseup');
 	// Get next randoms
 	actualDemoGestures = getSomeArrayRandomItems(actualScore+1, gestures);
@@ -95,7 +85,7 @@ function nextGesture() {
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	if(actualItem+1 >= actualGestures.length) {
 		drawGoodText();
-		setTimeout(nextLevel, 1000);
+		setTimeout(nextLevel, 2000);
 	} else {
 		drawStartText();
 		++actualItem;
@@ -112,7 +102,7 @@ function gameOver() {
 	// Clear canvas
 	ctx.clearRect(0,0,canvas.width,canvas.height);
 	drawGameOverText();
-	setTimeout(endGame(), 1000);
+	setTimeout(endGame, 2000);
 }
 
 function endGame() {
@@ -129,11 +119,6 @@ function endGame() {
 }
 
 function initGesturesHandlers() {
-	// Handling touch platforms
-	//$(document).bind('touchstart', touchstartHandler);
-	//$(document).bind('touchmove', touchmoveHandler);
-	//$(document).bind('touchend', touchendHandler);
-
 	// Handling mouse platforms
 	$(document).on('vmousedown', mousedownHandler);
 	$(document).on('vmousemove', mousemoveHandler);
@@ -141,11 +126,6 @@ function initGesturesHandlers() {
 }
 
 function endGesturesHandlers() {
-	// Unbinding touch platforms
-	//$(document).unbind('touchstart');
-	//$(document).unbind('touchmove');
-	//$(document).unbind('touchend');
-
 	// Unbinding mouse platforms
 	$(document).off('vmousedown');
 	$(document).off('vmousemove');

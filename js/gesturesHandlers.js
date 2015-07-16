@@ -27,11 +27,6 @@ function startPath(e, pageX, pageY) {
 	oldY = pageY;
 }
 
-function touchstartHandler(e) {
-	var touch = e.touches[0];
-	startPath(e, touch.pageX, touch.pageY);
-}
-
 function mousedownHandler(e) {
 	isMouseDown = true;
 	startPath(e, e.pageX, e.pageY);
@@ -52,17 +47,6 @@ function trackPath(pageX, pageY) {
 	ctx.shadowOffsetY = 0;
 	ctx.shadowBlur = 10;
 	_points[_points.length] = new Point(oldX,oldY);
-}
-
-function touchmoveHandler(e) {
-	if (oldX - e.pageX < 3 && oldX - e.pageX > -3) {
-		return;
-	}
-	if (oldY - e.pageY < 3 && oldY - e.pageY > -3) {
-		return;
-	}
-	var touch = e.touches[0];
-	trackPath(touch.pageX, touch.pageY);
 }
 
 function mousemoveHandler(e) {
@@ -93,10 +77,6 @@ function endPath() {
 		}
 	}
 	_points = [];
-}
-
-function touchendHandler(e) {
-	endPath();
 }
 
 function mouseupHandler(e) {

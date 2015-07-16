@@ -29,13 +29,13 @@ function drawStartText() {
 function drawGoodText() {
 	var x = canvas.width / 2;
   	var y = canvas.height / 4;
-  	drawTextAt('Good! Try next level', x, y);
+  	drawTextAt("Good! C'mon", x, y);
 }
 
 function drawGameOverText() {
 	var x = canvas.width / 2;
   	var y = canvas.height / 4;
-  	drawTextAt('Game Over! You lose!', x, y);
+  	drawTextAt('Game Over!', x, y);
 }
 
 function drawBestScoreText(bestScore) {
