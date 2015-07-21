@@ -15,7 +15,8 @@ function drawBestScoreScreen(bestScore) {
 
 function drawTextAt(text, x, y) {
 	ctx.font = '900 small-caps 55px Arial';
-	if(canvas.width < 400) ctx.font = '900 small-caps 35px Arial';
+	if(canvas.width < 350) ctx.font = '900 small-caps 30px Arial';
+	else if(canvas.width < 400) ctx.font = '900 small-caps 35px Arial';
 	ctx.textAlign = 'center';
 	ctx.fillStyle = 'purple';
   	ctx.fillText(text, x, y);
