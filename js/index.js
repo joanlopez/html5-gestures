@@ -1,6 +1,9 @@
 var gestures = ['triangle', 'x', 'rectangle', 'circle',
-				'check', 'v', 'delete'];
+				'check', 'caret', 'zig-zag', 'arrow',
+				'v', 'delete', 'star', 'pigtail'];
 
+
+var assetsManager;
 /////////////////
 // DEMO VARIABLES
 
@@ -19,8 +22,13 @@ var actualItem;
 var actualScore;
 
 $(document).ready(function() {
-	initApp();
+	initAssets();
 });
+
+function initAssets() {
+	assetsManager = new AssetsManager(initApp);
+	assetsManager.downloadAll();
+}
 
 function initApp() {
 	bestScore = window.localStorage.getItem ('bestScore') || 0;
@@ -46,7 +54,7 @@ function initializeDemo() {
 	// Unbind events
 	$(document).unbind('vmouseup');
 	// Get next randoms
-	actualDemoGestures = getSomeArrayRandomItems(actualScore+1, gestures);
+	actualDemoGestures = getRandomIntsArray(actualScore+1, 1, gestures.length);
 	// Set state
 	actualDemoItem = 0;
 	figure = false;
@@ -64,7 +72,7 @@ function playDemo() {
 			ctx.clearRect(0,0,canvas.width,canvas.height);
 			figure = false;
 		} else {
-			drawFigure(actualDemoGestures[actualDemoItem]);	
+			drawCenteredAsset(actualDemoGestures[actualDemoItem]);
 			++actualDemoItem;
 			figure = true;
 		}
