@@ -70,7 +70,7 @@ function endPath() {
 	ctx.closePath();
 	if (_points.length >= 10) {
 		var result = _r.Recognize(_points);
-		if(actualGestures[actualItem] == result.Name) {
+		if(gestures[actualGestures[actualItem]-1] == result.Name) {
 			nextGesture();
 		} else {
 			gameOver();
